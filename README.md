@@ -24,3 +24,9 @@ There's some academic work too:
  * "There was a paper about 10 years ago that looked into the idea raised at the end of the article. They crawled the internet and checked images for statistical indications of steganographic techniques, and the only positive hit was an example image used page about steganography. I believe it was this one: https://www.citi.umich.edu/techreports/reports/citi-tr-01-11.pdf but I haven't had a chance to read through it." [citation](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vdekm). Also, see http://www.citi.umich.edu/u/provos/stego/ as [cited here](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vaw9t)
 
 The article on the technique itself can be found [here](http://qaa.ath.cx/PiggyPack.html).
+
+## Related Work
+
+A number of people have contacted me and made projects inspired from this.
+
+ * Austin Hamman's [stegano.js](https://github.com/tuseroni/stegano.js) is a javascript version for the browser; using base64 encoders, canvas, and a few other nice tricks.  I've thought hard about the problem myself and have run into the same walls that he discloses; primarily that b64encoded data, embedded in an iframe say, "iframe src=data:..." can't do some file-name hinting, like "content-disposition: attachment; filename=" in HTTP. 
