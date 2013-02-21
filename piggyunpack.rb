@@ -134,7 +134,7 @@ bytes = 0.upto(enc.length / 3 - 1).map { | x |
 # +-+--------+--------+----------- ~ ~ ---+
 #
 # Where 
-#   F is the lenth of the file name 
+#   F is the length of the file name 
 #   FileName is the name of the file that was encoded
 #   FileSize is a 64 bit number that is the length of 
 #    the encoded file

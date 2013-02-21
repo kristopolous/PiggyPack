@@ -25,6 +25,13 @@ There's some academic work too:
 
 The article on the technique itself can be found [here](http://qaa.ath.cx/PiggyPack.html).
 
+## Usage
+
+Their are two generously commented files:
+
+ * get-payload-from-web.sh - It gets the payloads from the web, starting from youtube and ending as a 3gp file
+ * piggyunpack.rb - The code to separate the image from the audio
+
 ## Related Work
 
 A number of people have contacted me and made projects inspired from this.

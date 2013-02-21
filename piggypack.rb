@@ -1,20 +1,23 @@
 #!/usr/bin/env ruby
-filename = "astley.3gp"
+# piggypack does the following things:
+# 
+#  1. Takes a file, called the "payload" file
+payload_name = "astley.3gp"
 overlay_name = "astley.ppm"
 out = File.open("binary.pgm", "w")
-handle = File.open(filename, "r")
+handle = File.open(payload_name, "r")
 overlay_handle = File.open(overlay_name, "r")
 
 3.times do out << overlay_handle.readline + "\n"; end
 bytes = handle.read
 
 # The length of the file name (8B)
-# the filename itself
+# the payload itself
 # The length of the file (8B)
 # the file itself
 numbers = [
-  filename.length,
-  filename.unpack("C*"),
+  payload_name.length,
+  payload_name.unpack("C*"),
   [bytes.length].pack('q*').unpack('C*'),
   bytes.unpack("C*")
 ].flatten
@@ -47,5 +50,8 @@ loop {
   }
   out << line.join(' ') + "\n"
 }
-  out << "\n"
+out << "\n"
+
+out.close
+
 `convert binary.pgm binary.png`
