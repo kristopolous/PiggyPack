@@ -1,9 +1,20 @@
+The article on the technique can be found [here](http://9ol.es/PiggyPack.html).
+
 # PiggyPack
 
 Digital Steganography For Fun And Profit
 
+## Usage
+
+Their are two generously commented files:
+
+ * get-payload-from-web.sh - It gets the payloads from the web, starting from youtube and ending as a 3gp file
+ * piggyunpack.rb - The code to separate the image from the audio
+
+## About
+
 This is a very rough implementation of lsb image steganography. The ideal
-goal was outlined in [this reddit post](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vcef3)::
+goal was outlined in [this reddit post](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vcef3):
 
   "A nominal, simple way to piggy back on image uploaders in order to post files of modest size ... I want to explore what that workflow and interfacing would feel like."
 
@@ -22,15 +33,6 @@ There's some academic work too:
  * "Jessica Fridrich holds seven patents for reliable detection of least significant bit steganography". [citation](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vfna6)
 
  * "There was a paper about 10 years ago that looked into the idea raised at the end of the article. They crawled the internet and checked images for statistical indications of steganographic techniques, and the only positive hit was an example image used page about steganography. I believe it was this one: https://www.citi.umich.edu/techreports/reports/citi-tr-01-11.pdf but I haven't had a chance to read through it." [citation](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vdekm). Also, see http://www.citi.umich.edu/u/provos/stego/ as [cited here](http://www.reddit.com/r/programming/comments/q75bz/hiding_things_out_in_the_open/c3vaw9t)
-
-The article on the technique itself can be found [here](http://qaa.ath.cx/PiggyPack.html).
-
-## Usage
-
-Their are two generously commented files:
-
- * get-payload-from-web.sh - It gets the payloads from the web, starting from youtube and ending as a 3gp file
- * piggyunpack.rb - The code to separate the image from the audio
 
 ## Related Work
 
