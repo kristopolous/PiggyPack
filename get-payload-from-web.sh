@@ -14,7 +14,7 @@
 #     videos from youtube and saves them to disk.
 #
 #  4. Download a specific youtube id and extract the audio
-#     from it, resulting in an aac file.
+#     from it, resulting in an m4a file.
 #
 #  5. Download the 3GPP reference encoder from codingtechnologies.com
 #     (snagged before they were bought by Dolby).
@@ -23,7 +23,7 @@
 #
 #  7. Waits until the youtube video is downloaded and converted.
 #
-#  8. Converts the aac to a 48Khz WAV file (needed by the
+#  8. Converts the m4a to a 48Khz WAV file (needed by the
 #     reference encoder).
 #
 #  9. Generates a mono 12Khz 3GPP file, puts it into the 
@@ -44,7 +44,7 @@ cat=zJ1cx.png
 #
 # Step 1: Makes sure you have gcc, ffmpeg, wget, and python.
 #
-sudo apt-get install python gcc ffmpeg wget imagemagick
+sudo apt-get install libaudio-dev python gcc ffmpeg wget imagemagick
 
 
 
@@ -61,8 +61,7 @@ cd $base
 #         videos from youtube and saves them to disk.
 #
 if [ ! -e youtube-dl ]; then
-  wget "https://github.com/rg3/youtube-dl/blob/master/youtube-dl?raw=true"
-  mv "youtube-dl?raw=true" youtube-dl
+  wget --no-check-certificate https://yt-dl.org/downloads/2014.06.04/youtube-dl
   chmod +x youtube-dl
 fi
 
@@ -70,9 +69,9 @@ fi
 
 #
 # Step 4: Download a specific youtube id and extract the audio
-#         from it, resulting in an aac file.
+#         from it, resulting in an m4a file.
 #
-[ -e ${ytid}.aac ] || ./youtube-dl --extract-audio $ytid &
+[ -e ${ytid}.m4a ] || ./youtube-dl --id -f 140 $ytid &
 
 
 
@@ -81,7 +80,7 @@ fi
 #         (snagged before they were bought by Dolby).
 #
 if [ ! -e 26411-800-ANSI-C_source_code.zip ]; then
-  wget vukkake.com/26411-800-ANSI-C_source_code.zip
+  wget getpostdelete.com/26411-800-ANSI-C_source_code.zip
 
 
 
@@ -100,7 +99,7 @@ fi
 #
 # Step 7: Waits until the youtube video is downloaded and converted.
 #
-while [ ! -e ${ytid}.aac ]; do
+while [ ! -e ${ytid}.m4a ]; do
   sleep 1
 done
 
@@ -110,7 +109,7 @@ done
 # Step 8: Converts the aac to a 48Khz WAV file (needed by the
 #         reference encoder).
 #
-[ -e ${ytid}.wav ] || ffmpeg -i ${ytid}.aac -ar 48000 -ac 2 ${ytid}.wav
+[ -e ${ytid}.wav ] || ffmpeg -i ${ytid}.m4a -ar 48000 -ac 2 ${ytid}.wav
 
 
 
